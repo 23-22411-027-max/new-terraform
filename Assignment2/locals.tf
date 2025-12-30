@@ -1,34 +1,31 @@
-# Detect your current public IP dynamically
 data "http" "my_ip" {
   url = "https://icanhazip.com"
 }
 
 locals {
   my_ip = "${chomp(data.http.my_ip.response_body)}/32"
-
-  # Common tags for all resources
+  
   common_tags = {
     Environment = var.env_prefix
     Project     = "Assignment-2"
     ManagedBy   = "Terraform"
   }
 
-  # Backend servers configuration
   backend_servers = [
     {
-      name       = "web-1"
-      suffix     = "1"
+      name        = "web-1"
+      suffix      = "1"
       script_path = "./scripts/apache-setup.sh"
-    },
+    }, 
     {
-      name       = "web-2"
-      suffix     = "2"
+      name        = "web-2"
+      suffix      = "2"
       script_path = "./scripts/apache-setup.sh"
-    },
+    }, 
     {
-      name       = "web-3"
-      suffix     = "3"
+      name        = "web-3"
+      suffix      = "3"
       script_path = "./scripts/apache-setup.sh"
-    }
+    } 
   ]
 }

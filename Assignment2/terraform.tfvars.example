@@ -1,0 +1,33 @@
+# --------------------------------------------------------------------------------
+# terraform.tfvars.example
+# This file shows the expected structure for the real terraform.tfvars, 
+# but uses placeholder values to prevent exposure of sensitive information.
+# DO NOT COMMIT YOUR REAL terraform.tfvars FILE.
+# --------------------------------------------------------------------------------
+
+vpc_cidr_block    = "10.0.0.0/16"
+subnet_cidr_block = "10.0.10.0/24"
+availability_zone = "me-central-1a"
+env_prefix        = "prod-a2"
+instance_type     = "t3.micro"
+
+# Replace with the path to your public key.
+public_key        = "~/.ssh/id_ed25519.pub"
+# Replace with the path to your private key (required for ssh command line guide).
+private_key       = "~/.ssh/id_ed25519"
+
+# Backend servers list (uses apache-setup.sh)
+backend_servers = [
+  {
+    name        = "web-1"
+    script_path = "./scripts/apache-setup.sh"
+  },
+  {
+    name        = "web-2"
+    script_path = "./scripts/apache-setup.sh"
+  },
+  {
+    name        = "web-3"
+    script_path = "./scripts/apache-setup.sh"
+  }
+]

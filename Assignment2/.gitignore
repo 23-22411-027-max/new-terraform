@@ -1,4 +1,19 @@
+# Terraform sensitive and state files
 .terraform/
 *.tfstate
-*.tfvars
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*-override.tf
+*-override.tf.json
+
+# Variable files - EXCLUDE the real file, INCLUDE the example file
+terraform.tfvars
+*.auto.tfvars
+
+# AWS/SSH Keys and Credentials
 *.pem
+*.key
+.aws/
+credentials
